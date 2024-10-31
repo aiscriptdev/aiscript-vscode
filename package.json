@@ -1,0 +1,30 @@
+{
+    "name": "aiscript-vscode",
+    "displayName": "AIScript Language",
+    "description": "Syntax highlighting for AIScript language",
+    "version": "0.0.1",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/aiscriptdev/aiscript"
+    },
+    "engines": {
+      "vscode": "^1.70.0"
+    },
+    "categories": [
+      "Programming Languages"
+    ],
+    "contributes": {
+      "languages": [{
+        "id": "aiscript",
+        "aliases": ["AIScript", "aiscript"],
+        "extensions": [".ai"],
+        "configuration": "./language-config.json"
+      }],
+      "grammars": [{
+        "language": "aiscript",
+        "scopeName": "source.aiscript",
+        "path": "./syntaxes/aiscript.tmLanguage.json"
+      }]
+    }
+  }

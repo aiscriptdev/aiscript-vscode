@@ -1,0 +1,159 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "AIScript",
+    "patterns": [
+      {
+        "include": "#comments"
+      },
+      {
+        "include": "#keywords"
+      },
+      {
+        "include": "#dsl-keywords"
+      },
+      {
+        "include": "#directives"
+      },
+      {
+        "include": "#types"
+      },
+      {
+        "include": "#routes"
+      },
+      {
+        "include": "#constants"
+      }
+    ],
+    "repository": {
+      "comments": {
+        "patterns": [
+          {
+            "name": "comment.line.double-slash.aiscript",
+            "match": "//.*$"
+          },
+          {
+            "name": "comment.block.aiscript",
+            "begin": "/\\*",
+            "end": "\\*/"
+          }
+        ]
+      },
+      "keywords": {
+        "patterns": [{
+          "name": "keyword.control.aiscript",
+          "match": "\\b(and|class|else|false|for|fn|if|nil|or|print|return|super|this|true|let|while|ai|prompt|agent)\\b"
+        }]
+      },
+      "dsl-keywords": {
+        "patterns": [{
+          "name": "keyword.other.aiscript",
+          "match": "\\b(route|get|post|put|delete|query|body)\\b"
+        }]
+      },
+      "directive-values": {
+        "patterns": [
+          {
+            "begin": "\\[",
+            "end": "\\]",
+            "patterns": [
+              {
+                "match": "\"([^\"]*?)\"",
+                "name": "string.quoted.double.aiscript"
+              },
+              {
+                "match": ",",
+                "name": "punctuation.separator.array.aiscript"
+              }
+            ]
+          },
+          {
+            "match": "\"([^\"]*?)\"",
+            "name": "string.quoted.double.aiscript"
+          },
+          {
+            "match": "\\b(true|false)\\b",
+            "name": "constant.language.boolean.aiscript"
+          },
+          {
+            "match": "\\b\\d+\\b",
+            "name": "constant.numeric.aiscript"
+          }
+        ]
+      },
+      "directive-arguments": {
+        "patterns": [
+          {
+            "match": "([a-zA-Z_][a-zA-Z0-9_]*)\\s*(=)",
+            "captures": {
+              "1": { "name": "variable.parameter.directive.aiscript" },
+              "2": { "name": "keyword.operator.assignment.aiscript" }
+            }
+          },
+          {
+            "include": "#directive-values"
+          },
+          {
+            "match": ",",
+            "name": "punctuation.separator.parameter.aiscript"
+          }
+        ]
+      },
+      "directives": {
+        "patterns": [
+          {
+            "begin": "(@)([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+            "beginCaptures": {
+              "1": { "name": "keyword.operator.decorator.aiscript" },
+              "2": { "name": "entity.name.function.directive.aiscript" }
+            },
+            "end": "\\)",
+            "patterns": [
+              {
+                "match": "(@)([a-zA-Z_][a-zA-Z0-9_]*)",
+                "captures": {
+                  "1": { "name": "keyword.operator.decorator.aiscript" },
+                  "2": { "name": "entity.name.function.directive.aiscript" }
+                }
+              },
+              {
+                "include": "#directives"
+              },
+              {
+                "include": "#directive-arguments"
+              }
+            ]
+          },
+          {
+            "match": "(@)([a-zA-Z_][a-zA-Z0-9_]*)",
+            "captures": {
+              "1": { "name": "keyword.operator.decorator.aiscript" },
+              "2": { "name": "entity.name.function.directive.aiscript" }
+            }
+          }
+        ]
+      },
+      "types": {
+        "patterns": [{
+          "name": "support.type.aiscript",
+          "match": "\\b(str|int|bool)\\b"
+        }]
+      },
+      "routes": {
+        "match": "(/[a-zA-Z0-9_/]*)",
+        "name": "string.regexp.aiscript"
+      },
+      "constants": {
+        "patterns": [
+          {
+            "name": "constant.numeric.aiscript",
+            "match": "\\b[0-9]+\\b"
+          },
+          {
+            "name": "constant.language.aiscript",
+            "match": "\\b(true|false)\\b"
+          }
+        ]
+      }
+    },
+    "scopeName": "source.aiscript"
+  }
