@@ -12,16 +12,22 @@
         "include": "#dsl-keywords"
       },
       {
+        "include": "#routes"
+      },
+      {
+        "include": "#fields"
+      },
+      {
+        "include": "#operators"
+      },
+      {
         "include": "#directives"
       },
       {
         "include": "#types"
       },
       {
-        "include": "#routes"
-      },
-      {
-        "include": "#constants"
+        "include": "#literals"
       }
     ],
     "repository": {
@@ -50,6 +56,51 @@
           "match": "\\b(route|get|post|put|delete|query|body)\\b"
         }]
       },
+      "fields": {
+        "match": "^\\s*(\\w+):",
+        "captures": {
+          "1": { "name": "entity.other.attribute-name.aiscript" }
+        }
+      },
+      "operators": {
+        "patterns": [
+          {
+            "name": "keyword.operator.arithmetic.aiscript",
+            "match": "\\+|\\-|\\*|\\/|\\%"
+          },
+          {
+            "name": "keyword.operator.assignment.aiscript",
+            "match": "="
+          },
+          {
+            "name": "keyword.operator.logical.aiscript",
+            "match": "\\!|&&|\\|\\||\\=\\=|\\!\\=|\\>|\\<|\\>\\=|\\<\\="
+          }
+        ]
+      },
+      "literals": {
+        "patterns": [
+          {
+            "name": "string.quoted.double.aiscript",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+              {
+                "name": "constant.character.escape.aiscript",
+                "match": "\\\\."
+              }
+            ]
+          },
+          {
+            "name": "constant.numeric.aiscript",
+            "match": "\\b\\d+\\b"
+          },
+          {
+            "name": "constant.language.boolean.aiscript",
+            "match": "\\b(true|false)\\b"
+          }
+        ]
+      },
       "directive-values": {
         "patterns": [
           {
@@ -57,8 +108,7 @@
             "end": "\\]",
             "patterns": [
               {
-                "match": "\"([^\"]*?)\"",
-                "name": "string.quoted.double.aiscript"
+                "include": "#literals"
               },
               {
                 "match": ",",
@@ -67,16 +117,7 @@
             ]
           },
           {
-            "match": "\"([^\"]*?)\"",
-            "name": "string.quoted.double.aiscript"
-          },
-          {
-            "match": "\\b(true|false)\\b",
-            "name": "constant.language.boolean.aiscript"
-          },
-          {
-            "match": "\\b\\d+\\b",
-            "name": "constant.numeric.aiscript"
+            "include": "#literals"
           }
         ]
       },
@@ -140,19 +181,7 @@
       },
       "routes": {
         "match": "(/[a-zA-Z0-9_/]*)",
-        "name": "string.regexp.aiscript"
-      },
-      "constants": {
-        "patterns": [
-          {
-            "name": "constant.numeric.aiscript",
-            "match": "\\b[0-9]+\\b"
-          },
-          {
-            "name": "constant.language.aiscript",
-            "match": "\\b(true|false)\\b"
-          }
-        ]
+        "name": "entity.name.function.aiscript"
       }
     },
     "scopeName": "source.aiscript"
