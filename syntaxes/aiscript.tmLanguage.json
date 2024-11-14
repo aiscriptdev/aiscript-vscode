@@ -47,7 +47,7 @@
       "keywords": {
         "patterns": [{
           "name": "keyword.control.aiscript",
-          "match": "\\b(and|class|else|false|for|fn|if|nil|or|print|return|super|this|true|let|while|ai|prompt|agent)\\b"
+          "match": "\\b(and|break|class|continue|else|false|for|fn|if|nil|or|print|return|super|this|true|let|while|ai|embed|prompt|agent)\\b"
         }]
       },
       "dsl-keywords": {
