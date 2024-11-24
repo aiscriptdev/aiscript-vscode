@@ -6,6 +6,15 @@
         "include": "#comments"
       },
       {
+        "include": "#builtins"
+      },
+      {
+        "include": "#function-declaration"
+      },
+      {
+        "include": "#function-call"
+      },
+      {
         "include": "#keywords"
       },
       {
@@ -44,16 +53,43 @@
           }
         ]
       },
+      "function-declaration": {
+        "patterns": [
+          {
+            "match": "\\b(fn)\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+            "captures": {
+              "1": { "name": "keyword.control.aiscript" },
+              "2": { "name": "entity.name.function.declaration.aiscript" }
+            }
+          }
+        ]
+      },
+      "function-call": {
+        "patterns": [
+          {
+            "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+            "captures": {
+              "1": { "name": "entity.name.function.call.aiscript" }
+            }
+          }
+        ]
+      },
       "keywords": {
         "patterns": [{
           "name": "keyword.control.aiscript",
-         "match": "\\b(and|break|class|const|continue|else|false|for|fn|if|in|nil|or|print|pub|return|super|this|true|let|use|while|ai|embed|prompt|agent)\\b"
+          "match": "\\b(and|break|class|const|continue|else|false|for|fn|if|in|nil|or|pub|return|super|this|true|let|use|while|ai|embed|prompt|agent)\\b"
         }]
       },
       "dsl-keywords": {
         "patterns": [{
           "name": "keyword.other.aiscript",
           "match": "\\b(route|get|post|put|delete|query|body)\\b"
+        }]
+      },
+      "builtins": {
+        "patterns": [{
+          "name": "support.function.builtin.aiscript",
+          "match": "\\b(abs|len|any|all|min|max|round|sum|input|print|bool|float|int|str|ascii|chr|ord|bin|hex|oct|callable|format)\\b(?=\\s*\\()"
         }]
       },
       "fields": {
@@ -185,4 +221,4 @@
       }
     },
     "scopeName": "source.aiscript"
-  }
+}
