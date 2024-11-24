@@ -9,10 +9,16 @@
         "include": "#builtins"
       },
       {
+        "include": "#class-declaration"
+      },
+      {
         "include": "#function-declaration"
       },
       {
         "include": "#function-call"
+      },
+      {
+        "include": "#constant-declaration"
       },
       {
         "include": "#keywords"
@@ -52,6 +58,30 @@
             "end": "\\*/"
           }
         ]
+      },
+      "class-declaration": {
+        "patterns": [
+          {
+            "match": "\\b(class)\\s+([A-Z][a-zA-Z0-9_]*)\\s*[\\(\\{:]",
+            "captures": {
+              "1": { "name": "keyword.control.aiscript" },
+              "2": { "name": "entity.name.type.class.aiscript" }
+            }
+          },
+          {
+            "match": "\\b([A-Z][a-zA-Z0-9_]*)\\s*\\(",
+            "captures": {
+              "1": { "name": "entity.name.type.class.aiscript" }
+            }
+          }
+        ]
+      },
+      "constant-declaration": {
+        "match": "\\b(const)\\s+([A-Z][A-Z0-9_]*)\\b",
+        "captures": {
+          "1": { "name": "keyword.control.aiscript" },
+          "2": { "name": "variable.other.constant.aiscript" }
+        }
       },
       "function-declaration": {
         "patterns": [
@@ -129,7 +159,7 @@
           },
           {
             "name": "constant.numeric.aiscript",
-            "match": "\\b\\d+\\b"
+            "match": "\\b\\d+(\\.\\d+)?\\b"
           },
           {
             "name": "constant.language.boolean.aiscript",
