@@ -3,6 +3,9 @@
     "name": "AIScript",
     "patterns": [
       {
+        "include": "#keywords"
+      },
+      {
         "include": "#comments"
       },
       {
@@ -15,13 +18,13 @@
         "include": "#function-declaration"
       },
       {
+        "include": "#kwargs"
+      },
+      {
         "include": "#function-call"
       },
       {
         "include": "#constant-declaration"
-      },
-      {
-        "include": "#keywords"
       },
       {
         "include": "#dsl-keywords"
@@ -59,6 +62,12 @@
           }
         ]
       },
+      "kwargs": {
+        "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)=",
+        "captures": {
+          "1": { "name": "variable.parameter.keyword.aiscript" }
+        }
+      },
       "class-declaration": {
         "patterns": [
           {
@@ -95,14 +104,10 @@
         ]
       },
       "function-call": {
-        "patterns": [
-          {
-            "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
-            "captures": {
-              "1": { "name": "entity.name.function.call.aiscript" }
-            }
-          }
-        ]
+        "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*\\(",
+        "captures": {
+          "1": { "name": "entity.name.function.call.aiscript" }
+        }
       },
       "keywords": {
         "patterns": [{
