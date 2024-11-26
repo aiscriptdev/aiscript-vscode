@@ -1,3 +1,9 @@
+# aiscript-vscode
+
+<p align="center">
+    <img align="right" width="300" src="icon.png">
+</p>
+
 ## Test
 
 ```

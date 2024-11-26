@@ -3,6 +3,7 @@
     "displayName": "AIScript Language",
     "description": "Syntax highlighting for AIScript language",
     "version": "0.0.1",
+    "icon": "icon.png",
     "license": "LICENSE",
     "repository": {
         "type": "git",
