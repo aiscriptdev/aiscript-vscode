@@ -146,7 +146,7 @@
       "keywords": {
         "patterns": [{
           "name": "keyword.control.aiscript",
-          "match": "\\b(and|break|class|const|continue|else|enum|false|for|fn|if|in|nil|or|pub|return|super|this|true|let|use|while|ai|embed|prompt|agent)\\b"
+          "match": "\\b(and|break|class|const|continue|else|enum|false|for|fn|if|in|nil|or|pub|return|super|self|true|let|use|while|ai|embed|prompt|agent)\\b"
         }]
       },
       "dsl-keywords": {
