@@ -146,7 +146,7 @@
       "keywords": {
         "patterns": [{
           "name": "keyword.control.aiscript",
-          "match": "\\b(and|break|class|const|continue|else|enum|false|for|fn|if|in|nil|not|or|pub|raise|return|super|self|true|let|use|while|ai|embed|prompt|agent)\\b"
+          "match": "\\b(and|break|class|const|continue|else|enum|false|for|fn|if|in|match|nil|not|or|pub|raise|return|super|self|true|let|use|while|ai|embed|prompt|agent)\\b"
         }]
       },
       "dsl-keywords": {
@@ -170,7 +170,11 @@
       "operators": {
         "patterns": [
           {
-            "name": "keyword.operator.arithmetic.aiscript",
+            "name": "keyword.operator.range.aiscript",
+            "match": "\\.\\.=?"
+          },
+          {
+            "name": "keyword.operator.arithmetic.aiscript", 
             "match": "\\+|\\-|\\*|\\/|\\%"
           },
           {
@@ -186,8 +190,8 @@
             "match": "::"
           },
           {
-            "name": "keyword.operator.pipe.aiscript",
-            "match": "\\|>"
+            "name": "keyword.operator.arrow.aiscript",
+            "match": "\\|>|=>"
           },
           {
             "name": "keyword.operator.question.aiscript",
