@@ -298,6 +298,10 @@
         "patterns": [{
           "name": "support.type.aiscript",
           "match": "\\b(str|int|bool)\\b"
+        },
+        {
+            "match": "\\b[a-zA-Z][a-zA-Z0-9_]*!",
+            "name": "entity.name.type.error.aiscript"
         }]
       },
       "routes": {
