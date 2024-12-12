@@ -194,8 +194,8 @@
             "match": "\\|>|=>"
           },
           {
-            "name": "keyword.operator.question.aiscript",
-            "match": "\\?"
+            "name": "keyword.operator.others.aiscript",
+            "match": "\\?|\\|"
           }
         ]
       },
